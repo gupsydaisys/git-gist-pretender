@@ -1,0 +1,18 @@
+class User
+  id - String
+  email - String (must satisfy blah@blah.blah)
+  token - Unique Hash
+
+  @return token
+  def self.create_password_token(id or email)
+
+  @return T/F
+  def self.signed_up?(email)
+
+  @return user instance
+  def self.create(email)
+    # creates a new user from email iff user is not signed_up and email is valid
+
+  @return user or null if non exists
+  def self.get_user_with_attributes(email, password)
+

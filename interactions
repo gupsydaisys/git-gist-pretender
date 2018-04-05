@@ -1,0 +1,19 @@
+sign-up serena@grandrounds.com
+Error this email is already taken.
+
+sign-up serenagrandrounds.com
+Error you did not provide a valid email.
+
+sign-up serena@grandrounds.com
+Okay, we created a unique token for you
+Access Token = password1
+
+login serena@grandrounds.com password1
+Error that email is invalid
+Error that password is invalid
+Okay, you are signed in
+
+help
+
+list
+No posts yet.  Add another one!

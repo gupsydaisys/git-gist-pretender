@@ -1,0 +1,19 @@
+class Post
+  id
+  user_id
+  text
+  created_at
+  updated_at
+  deleted_at
+
+  @return true or false
+  def delete
+
+  @return true or false
+  def update(text)
+
+  @return true or false?
+  def self.create(text)
+
+  @return all post for user if user exists
+  def self.posts_for(user)

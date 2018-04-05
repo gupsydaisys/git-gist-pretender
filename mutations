@@ -1,0 +1,27 @@
+mutation sign_up
+  email
+  0) Check to see if email is valid (if this is correctly defined on query object its okay)
+  1) Checks User.signed_up?(email)
+  2) Saves user User.create(email)
+  3) Grabs from user the password
+
+mutation log_in
+  email
+  password
+  0) Check User.signed_up?(email)
+  1) Check User.get_user_with_attributes(email, password)
+  2) Create a new session for them
+
+mutation create
+  text
+  0) Call Post.create(text)
+
+mutation edit
+  text
+  id
+  0) Call Post#update(text)
+
+mutation delete
+  id
+  0) Call Post#delete
+

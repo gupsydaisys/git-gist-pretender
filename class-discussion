@@ -1,0 +1,7 @@
+How far did you get?
+What needs to be implemented vs assumed?
+
+- i assumed login relevant errors would be helpful
+- list, with deleted, ordering
+- text, user_id
+- updates + creates + deletes

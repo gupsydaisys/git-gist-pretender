@@ -1,0 +1,7 @@
+query list
+  ordered (like sql)
+  1) Grabs Post#posts_for(user)
+  2) Returns the array of posts
+
+query help
+-> introspection
