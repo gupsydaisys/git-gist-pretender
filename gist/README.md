@@ -1,6 +1,6 @@
 # Setup Instructions For Mac
 
-1. Get `rvm`: https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/ or another `chruby`: https://github.com/postmodern/chruby.
+1. Install [`rvm`](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/) or [`chruby`]( https://github.com/postmodern/chruby).
 ```
   brew install mysql2
   ruby-install ruby 2.4.1
