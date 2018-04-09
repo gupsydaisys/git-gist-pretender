@@ -9,6 +9,7 @@ Then do:
   gem install bundler
   bundle
   rake db:create
+  rake db:migrate
 ```
 
 # Start up console app
