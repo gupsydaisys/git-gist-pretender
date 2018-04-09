@@ -2,7 +2,7 @@
 
 Install [`rvm`](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/) or [`chruby`]( https://github.com/postmodern/chruby).
 Then do:
-```
+```bash
   brew install mysql2
   ruby-install ruby 2.4.1
   rvm use ruby-2.4.1 (or chruby use ruby-2.4.1)
@@ -13,10 +13,11 @@ Then do:
 ```
 
 # Start up console app
-
-TBD
+```bash
+  rails c
+```
 
 # Start up web app
-```
+```bash
   rails s
 ```
