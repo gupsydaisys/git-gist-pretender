@@ -16,6 +16,9 @@ Then do:
 ```bash
   rails c
 ```
+```ruby
+  Services::ManageGist.new.()
+```
 
 # Start up web app
 ```bash
