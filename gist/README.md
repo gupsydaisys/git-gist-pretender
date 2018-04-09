@@ -13,11 +13,9 @@ Then do:
 ```
 
 # Start up console app
-```bash
-  rails c
-```
 ```ruby
-  Services::ManageGist.new.()
+  $ rails c
+  > Services::ManageGist.new.()
 ```
 
 # Start up web app
