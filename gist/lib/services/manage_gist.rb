@@ -11,7 +11,7 @@ module Services
 
     def parse_command(input)
       args = input.split
-      case args[0]
+      case args[0].downcase.gsub(/[^a-z]/i, '')
       when 'menu', 'help', 'h'
         options_menu
       when 'quit', 'q'
