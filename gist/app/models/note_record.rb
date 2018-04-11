@@ -10,6 +10,9 @@ class NoteRecord < ActiveRecord::Base
   # @text must be present but can be blank
   validates :text, presence: true
 
+  # @commit_token should be unique, otherwise request already went through
+  validates :commit_token, uniqueness: { message: 'indicates request went through.' }
+
   def soft_delete
     update_attributes(deleted_at: Time.now)
   end

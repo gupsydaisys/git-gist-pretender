@@ -50,7 +50,7 @@ module Services
     # record in the future to make it easier for the user and less risky of a transaction
     # @param [ID] id of a NoteRecord
     def delete_note(id)
-      notify_log_in_neeeded unless logged_in_user.present?
+      notify_login_neeeded unless logged_in_user.present?
 
       # If it's already soft-deleted and we soft-delete it again, that is okay from the user's perspective.  But if
       # the record never existed, we should tell the user that.
@@ -66,7 +66,7 @@ module Services
     end
 
     def list_notes
-      notify_log_in_neeeded unless logged_in_user.present?
+      notify_login_neeeded unless logged_in_user.present?
       notes = NoteRecord.by_person_records(logged_in_user).sort_by(&:updated_at)
 
       if notes.empty?
@@ -84,14 +84,20 @@ module Services
     end
 
     def create_note(text)
-      notify_log_in_neeeded unless logged_in_user.present?
+      notify_login_neeeded unless logged_in_user.present?
+
       notify_with_message(text: "Post can not be blank") unless text.present?
-      NoteRecord.create(person_record: logged_in_user, text: text)
-      notify_with_message(action: :success)
+
+      # This commit_token needs to be created on the client and passed in so it's useless but this is for practice!
+      commit_token = (0...15).map { (65 + rand(26)).chr }.join
+      record = NoteRecord.create(person_record: logged_in_user, text: text, commit_token: commit_token)
+
+      is_success = record.valid? || (record.errors.messages[:commit_token].try(:first) == 'indicates request went through.')
+      notify_with_message(action: (is_success ? :success : :failure))
     end
 
     def login(email, token)
-      notify_with_message(text: "This action requires you to be logged out. Use the command `logout` and try again") if logged_in_user.present?
+      notify_logout_neeeded if logged_in_user.present?
       record = PersonRecord.find_by_email(email)
       notify_with_message(text: "No user exists with that email. Kindly try again") unless record.present?
       notify_with_message(text: "The email and token combination do not exist in our sytem.  Kindly try again.") unless (record.token == token)
@@ -101,17 +107,22 @@ module Services
     end
 
     def logout
-      notify_log_in_neeeded unless logged_in_user.present?
+      notify_login_neeeded unless logged_in_user.present?
       @logged_in_user = nil
       notify_with_message(action: :success)
     end
 
     def signup(email)
-      pr = PersonRecord.create(email: email)
-      if pr.present?
-        notify_with_message(text: "SUCCESS! We created a user for you with email: #{pr.email} and token: #{pr.token}")
+      notify_logout_neeeded if logged_in_user.present?
+
+      # This commit_token needs to be created on the client and passed in so it's useless but this is for practice!
+      commit_token = (0...15).map { (65 + rand(26)).chr }.join
+      record = PersonRecord.create(email: email, commit_token: commit_token)
+
+      if record.valid? || (record.errors.messages[:commit_token].try(:first) == 'indicates request went through.')
+        notify_with_message(text: "SUCCESS! We created a user for you with email: #{record.email} and token: #{record.token}")
       else
-        notify_with_message(text: pr.errors.full_messages)
+        notify_with_message(text: record.errors.full_messages)
       end
     end
 
@@ -135,9 +146,13 @@ module Services
       request_input
     end
 
-    def notify_log_in_neeeded
+    def notify_login_neeeded
       text = "This action requires you to be logged in. Use the command `login` and try again"
       notify_with_message(text: text)
+    end
+
+    def notify_logout_neeeded
+      notify_with_message(text: "This action requires you to be logged out. Use the command `logout` and try again")
     end
   end
 end
