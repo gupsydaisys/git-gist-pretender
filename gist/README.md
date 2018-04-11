@@ -21,7 +21,7 @@ Then do:
 ```bash
   rails s
 ```
-## Grab all notes by a user
+## Grab all notes by a user aka `list`
 ```javascript
   curl -i http://localhost:3000/note_records?id=USER_ID
   curl -i http://localhost:3000/note_records?email=USER_EMAIL
