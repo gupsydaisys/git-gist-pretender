@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409083736) do
+ActiveRecord::Schema.define(version: 20180411060626) do
 
   create_table "note_records", force: :cascade do |t|
     t.integer  "person_record_id", limit: 4
@@ -19,13 +19,15 @@ ActiveRecord::Schema.define(version: 20180409083736) do
     t.datetime "deleted_at"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "commit_token",     limit: 255
   end
 
   create_table "person_records", force: :cascade do |t|
-    t.string   "email",      limit: 255
-    t.string   "token",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "email",        limit: 255
+    t.string   "token",        limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "commit_token", limit: 255
   end
 
 end
