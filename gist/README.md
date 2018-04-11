@@ -11,7 +11,7 @@ Then do:
   rake db:migrate
 ```
 
-# Interactive Command Line App
+# Interactive "Command Line" App
 ```ruby
   $ rails c
   > Services::ManageGist.new.()
