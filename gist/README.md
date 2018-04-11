@@ -1,4 +1,4 @@
-# Setup Instructions For Mac
+## Setup Instructions For Mac
 
 Install [`rvm`](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/) or [`chruby`]( https://github.com/postmodern/chruby).
 Then do:
@@ -12,13 +12,17 @@ Then do:
   rake db:migrate
 ```
 
-# Start up Interactive Command Line App
+## Start up Interactive Command Line App
 ```ruby
   $ rails c
   > Services::ManageGist.new.()
 ```
 
-# Start up Web App (**Not Implemented Yet**)
+## Start up Web App
+```bash
+  rails s
+```
+# Grab all notes by a user
 ```bash
   rails s
 ```
