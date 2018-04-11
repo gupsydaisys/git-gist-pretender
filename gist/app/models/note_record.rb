@@ -4,6 +4,8 @@ class NoteRecord < ActiveRecord::Base
   # Get all notes by anyone in who is passed in by person_records
   scope :by_person_records, ->(*person_records) { where(person_record: Array.wrap(person_records)) }
 
+  scope :recently_created_first, -> { order('created_at desc') }
+
   # @person_record can be associated with a note but does not have to exist
   belongs_to :person_record
 
