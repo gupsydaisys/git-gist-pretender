@@ -11,13 +11,13 @@ Then do:
   rake db:migrate
 ```
 
-# Start up Interactive Command Line App
+# Interactive Command Line App
 ```ruby
   $ rails c
   > Services::ManageGist.new.()
 ```
 
-# Start up Web App
+# HTTP Endpoints
 ```bash
   rails s
 ```
