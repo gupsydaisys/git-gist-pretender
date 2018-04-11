@@ -51,9 +51,16 @@ module Services
     # @param [ID] id of a NoteRecord
     def delete_note(id)
       notify_log_in_neeeded unless logged_in_user.present?
-      record = NoteRecord.find_by_id(id)
+
+      # If it's already soft-deleted and we soft-delete it again, that is okay from the user's perspective.  But if
+      # the record never existed, we should tell the user that.
+      record = NoteRecord.unscoped.find_by_id(id)
       notify_with_message(text: "No post exists with id: #{id}") unless record.present?
-      notify_with_message(text: "You do not have permission to delete this post") unless (record.person_record == logged_in_user)
+
+      unless (record.person_record == logged_in_user)
+        notify_with_message(text: "You do not have permission to delete this post")
+      end
+
       action = record.soft_delete ? :success : :failure
       notify_with_message(action: (record.soft_delete ? :success : :failure))
     end
