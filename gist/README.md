@@ -22,7 +22,7 @@ Then do:
   rails s
 ```
 ## Grab all notes by a user aka `list`
-```javascript
+```ruby
   curl -i http://localhost:3000/note_records?id=USER_ID
   curl -i http://localhost:3000/note_records?email=USER_EMAIL
 ```
