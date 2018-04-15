@@ -25,5 +25,7 @@ module Gist
 
     # http://guides.rubyonrails.org/autoloading_and_reloading_constants.html
     config.autoload_paths << Rails.root.join('lib')
+
+    config.hash_salt = "0f088204e4ea706d8cb56441af4395f8"
   end
 end
