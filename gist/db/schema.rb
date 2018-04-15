@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415214757) do
+ActiveRecord::Schema.define(version: 20180415215451) do
+
+  create_table "note_records", id: false, force: :cascade do |t|
+    t.string   "identifier",       limit: 255
+    t.integer  "person_record_id", limit: 4
+    t.text     "text",             limit: 65535
+    t.string   "commit_token",     limit: 255
+    t.datetime "deleted_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "person_records", id: false, force: :cascade do |t|
     t.string   "identifier",   limit: 255
