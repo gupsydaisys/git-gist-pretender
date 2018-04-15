@@ -4,6 +4,7 @@ class PersonRecord < ActiveRecord::Base
   def id
     identifier
   end
+  scope :find_by_id, ->(identifier) { where(identifier: identifier).limit(1).first }
 
   # @email is not assumed to be real but must be present and match the form XXXX@XXXX.XXXX.  @email must be case
   # insensitively unique since it's used to uniquely identify a PersonRecord in the system.

@@ -16,7 +16,7 @@ class NoteRecord < ActiveRecord::Base
   scope :find_by_id, ->(identifier) { where(identifier: identifier).limit(1).first }
 
   # @person_record can be associated with a note but does not have to exist
-  belongs_to :person_recordwhere(identifier: identifier).limit(1).first
+  belongs_to :person_record
 
   # @text must be present but can be blank
   validates :text, presence: true
