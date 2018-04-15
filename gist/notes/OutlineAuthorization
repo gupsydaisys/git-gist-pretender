@@ -1,0 +1,12 @@
+Interactions
+- User has token with read access to Jo's notes
+- User passes a token to Jo and Jo makes authorizations
+
+ResourceActionAuthorization
+resource_type
+resource_id
+create
+read
+update
+delete
+token
