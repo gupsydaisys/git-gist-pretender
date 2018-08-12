@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+puts Dir.pwd
+
+require 'lib/services/manage_gist'
